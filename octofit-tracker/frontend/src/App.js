@@ -1,83 +1,69 @@
 
+import { Routes, Route, Link } from 'react-router-dom';
+import Activities from './components/Activities';
+import Leaderboard from './components/Leaderboard';
+import Teams from './components/Teams';
+import Users from './components/Users';
+import Workouts from './components/Workouts';
+
 function App() {
   return (
     <div className="App">
-      {/* Bootstrap Navigation */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">Octofit Tracker</a>
+          <Link className="navbar-brand" to="/">Octofit Tracker</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Activities</a>
+                <Link className="nav-link" to="/activities">Activities</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Teams</a>
+                <Link className="nav-link" to="/teams">Teams</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Leaderboard</a>
+                <Link className="nav-link" to="/leaderboard">Leaderboard</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Workouts</a>
+                <Link className="nav-link" to="/users">Users</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/workouts">Workouts</Link>
               </li>
             </ul>
           </div>
         </div>
       </nav>
 
-      {/* Bootstrap Heading */}
       <div className="container mt-5">
-        <h1 className="display-4 mb-4">Welcome to Octofit Tracker</h1>
-        {/* Bootstrap Card */}
-        <div className="card mb-4">
-          <div className="card-body">
-            <h5 className="card-title">Track Your Fitness Journey</h5>
-            <p className="card-text">Log activities, join teams, compete on leaderboards, and get personalized workout suggestions.</p>
-            <a href="https://reactjs.org" className="btn btn-primary">Learn React</a>
-          </div>
-        </div>
-
-        {/* Bootstrap Table Example */}
-        <h2 className="mb-3">Sample Data Table</h2>
-        <table className="table table-striped table-bordered">
-          <thead className="table-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Team</th>
-              <th scope="col">Activity</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Ironman</td>
-              <td>Marvel</td>
-              <td>Running</td>
-              <td><button className="btn btn-success btn-sm">View</button></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Batman</td>
-              <td>DC</td>
-              <td>Cycling</td>
-              <td><button className="btn btn-success btn-sm">View</button></td>
-            </tr>
-          </tbody>
-        </table>
-
-        {/* Bootstrap Modal Example */}
-        <button type="button" className="btn btn-info" data-bs-toggle="modal" data-bs-target="#infoModal">
-          Show Info Modal
-        </button>
-        <div className="modal fade" id="infoModal" tabIndex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <Routes>
+          <Route path="/" element={
+            <>
+              <h1 className="display-4 mb-4">Welcome to Octofit Tracker</h1>
+              <div className="card mb-4">
+                <div className="card-body">
+                  <h5 className="card-title">Track Your Fitness Journey</h5>
+                  <p className="card-text">Log activities, join teams, compete on leaderboards, and get personalized workout suggestions.</p>
+                  <a href="https://reactjs.org" className="btn btn-primary">Learn React</a>
+                </div>
+              </div>
+            </>
+          } />
+          <Route path="/activities" element={<Activities />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/teams" element={<Teams />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/workouts" element={<Workouts />} />
+        </Routes>
+      </div>
+    </div>
+  );
+}
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
